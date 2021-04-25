@@ -9,7 +9,7 @@ export class Player extends Schema {
     y = Math.floor(Math.random() * 400);
 }
 
-export class State extends Schema {
+class State extends Schema {
     @type({ map: Player })
     players = new MapSchema<Player>();
 
