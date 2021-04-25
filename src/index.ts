@@ -10,7 +10,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/', express.static(path.join(__dirname, "public")));
 
 // Attach WebSocket Server on HTTP Server.
 const gameServer = new Server({
@@ -25,7 +24,12 @@ gameServer.define("game", GameRoom)
 gameServer.onShutdown(() => {
     console.log(`game server is going down.`);
 });
-  
+
+app.use(express.static(path.join(__dirname, "../public")));
+
 gameServer.listen(port);
-  
+
 console.log(`Listening on http://localhost:${ port }`);
+// app.listen(port, () => {
+//     console.log(`Listening on http://localhost:${ port }`);
+// });
