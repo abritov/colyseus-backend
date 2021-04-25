@@ -55,6 +55,7 @@ export class GameRoom extends Room<State> {
     }
 
     onJoin (client: Client) {
+        console.log('join');
         client.send("hello", "world");
         this.state.createPlayer(client.sessionId);
     }
